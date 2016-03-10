@@ -25,11 +25,27 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+
     Route::auth();
 
     Route::get('/', function () {
         return view('welcome');
     });
 
+
     Route::get('/home', 'HomeController@index');
+
+    Route::group(['prefix' => 'articles'], function(){
+
+
+        /*Route::get('/','ArticleController@index');
+
+        Route::post('/',['as' => 'articles.store', 'uses' => 'ArticleController@store']);
+
+        Route::get('/create','ArticleController@create');*/
+
+    });
+
+    Route::resource('/articles', 'PostController');
+
 });
