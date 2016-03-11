@@ -8,7 +8,7 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                   <a href="{{route('articles.create')}}" class="col-md-10 col-md-offset-1 btn btn-warning"><i class="fa fa-plus-circle"></i>  Nouveau Projet</a>
                 </div>
             </div>
         </div>

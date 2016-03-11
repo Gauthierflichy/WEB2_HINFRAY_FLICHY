@@ -5,19 +5,22 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Modifier un article</div>
+                    <div class="panel-heading">Nouveau Projet</div>
 
                     <div class="panel-body">
 
                         {!! Form::open(['url' => route('articles.store'), 'method' => 'POST']) !!}
                            {{csrf_field()}}
-                           {!! Form::text('title') !!}
-                           <br>
-                           {!! Form::textarea('description') !!}
-                           <br>
-                            {!! Form::select('user_id', $users) !!}
-                           <br>
-                           {!! Form::submit('Envoyer') !!}
+                           <div class="form-group">
+                            {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                           </div>
+                           <div class="form-group">
+                           {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                           </div>
+                           <div class="form-group">
+                            {!! Form::select('user_id', $users, null, ['class' => 'form-control']) !!}
+                           </div>
+                           {!! Form::submit('Envoyer', ['class' => 'btn col-md-12 btn-success']) !!}
                        {!! Form::close() !!}
                         @if($errors)
                             <ul>
