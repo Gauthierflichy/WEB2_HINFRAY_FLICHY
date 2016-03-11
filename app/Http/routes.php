@@ -32,23 +32,18 @@ Route::group(['middleware' => 'web'], function () {
         return view('welcome');
     });
 
-
     Route::get('/home', 'HomeController@index');
 
     Route::resource('/projets', 'PostController');
     Route::resource('/articles', 'ArticleController');
-
-    Route::group(['prefix' => 'articles'], function(){
-
-
-        /*Route::get('/','ArticleController@index');
-
-        Route::post('/',['as' => 'articles.store', 'uses' => 'ArticleController@store']);
-
-        Route::get('/create','ArticleController@create');*/
-
-
-    });
-
-
 });
+
+    Route::get('/profile', ['middleware' => 'auth', 'as' => 'profile.show', 'uses' => 'ProfileController@show']);
+    Route::get('/profile/edit', ['middleware' => 'auth', 'as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+    Route::put('/profile', ['middleware' => 'auth', 'as' => 'profile.update', 'uses' => 'ProfileController@edit']);
+
+    Route::get('/profile/change_pswd', ['middleware' => 'auth', 'as' => 'profile.edit_pswd', 'uses' => 'ProfileController@edit_pswd']);
+    Route::put('/profile/change_pswd',['middleware' => 'auth', 'as' => 'profile.update_pswd', 'uses' => 'ProfileController@update_pswd'] );
+
+
+

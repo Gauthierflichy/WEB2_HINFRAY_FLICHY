@@ -2,6 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <h1>Edit</h1>
     {{--{!! Form::model(array('route' => array('post.update', $post->id), 'method' => 'PUT')) !!}--}}
 
@@ -30,4 +31,5 @@
         </ul>
     @endif
 
+>>>>>>> 8787ccdfbd918c3d208bd246d8773a86a0d76780
 @endsection
