@@ -1,21 +1,23 @@
+
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Articles</div>
+    <h1>Liste des articles</h1>
 
-                    <div class="panel-body">
-                        @foreach($posts as $post)
-                            <h2>{{$post->title}}</h2>
-                            <p>{{$post->demande}}</p>
-                            <a href="{{route('articles.show', $post->id)}}" class="btn btn-primary">Voir l'article</a>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @foreach($articles as $article)
+        <h2>{{$article->title}}</h2>
+        <p>{{$article->description}}</p>
+        <a href="{{route('articles.show', $article->id)}}">
+            <button>
+                Voir l'article
+            </button>
+        </a>
+        <form action="{{route('articles.destroy', $article->id)}}" method="POST">
+            {{csrf_field()}}
+            <input type="hidden" name="_method" value="DELETE">
+            <input value="supprimer" type="submit" class="form-control">
+
+        </form>
+    @endforeach
+
 @endsection

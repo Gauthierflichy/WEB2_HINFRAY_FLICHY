@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,7 +17,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles= Article::all();
+        return view('articles.index')->with(compact('articles'));
     }
 
     /**
@@ -25,7 +28,18 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $users= User::all()->lists('name', 'id');
+        return view('articles.create')->with(compact('users'));
+    }
+
+    public function edit($id)
+    {
+        $users= User::all()->lists('name','id');
+        $article= Article::find($id);
+        if(!$article){
+            return redirect()->to('/articles');
+        }
+        return view('articles.edit')->with(compact('article', 'users'));
     }
 
     /**
@@ -36,7 +50,30 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request,[
+            'user_id' => 'required',
+            'title' => 'required|min:10',
+            'description' => 'required|min:10'
+        ],[
+            'user_id,required' => 'user_id manquant',
+            'title.required' => 'titre obligatoire',
+            'title.min' => 'titre supérieur à 10 charachtère'
+        ]);
+
+
+        $article = new Post;
+        $article->user_id      = $request->user_id;
+        $article->title        = $request->title;
+        $article->description  = $request->description;
+
+        $article->save();
+        return redirect()->route('articles.show', $article->id);
+        //méthode 2
+        /*$post= Post::create($request->except('_token'));
+        dd($post);
+
+        */
     }
 
     /**
@@ -47,7 +84,11 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article= Article::where('id', $id)->first();
+        if(!$article){
+            return redirect()->to('/articles');
+        }
+        return view('articles.show')->with(compact('article'));
     }
 
     /**
@@ -56,10 +97,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -70,7 +108,19 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $article= Article::find($id);
+
+        if(!$article){
+            return redirect()->to('/articles');
+        }
+        $article->user_id= $request->user_id;
+        $article->title= $request->title;
+        $article->description= $request->description;
+
+        $article->save();
+
+        return redirect()->route('articles.show', $id);
     }
 
     /**
@@ -81,6 +131,12 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article= Article::find($id);
+        if(!$article){
+            return redirect()->to('/articles');
+        }
+        $article->delete();
+
+        return redirect()->route('articles.index');
     }
 }

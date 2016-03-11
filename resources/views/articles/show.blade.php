@@ -1,25 +1,22 @@
+
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Article {{$post->id}}</div>
+    <h2>Article n°{{$article->id}}</h2>
+    <h3>Auteur : {{$article->user->name}}</h3>
+    <p>{{$article->description}}</p>
+    <a href="{{route('articles.edit', $article->id)}}">
+        <button>
+            Modifier l'article
+        </button>
+    </a>
+    <form action="{{route('articles.destroy', $article->id)}}" method="POST">
+        {{csrf_field()}}
+    <input type="hidden" name="_method" value="DELETE">
+    <input value="supprimer" type="submit" class="form-control">
 
-                    <div class="panel-body">
-                       <h2>{{$post->title}}</h2>*
-                        <h4>{{$post->user->name}}</h4>
-                        <p>{{$post->description}}</p>
-                        <div class="row">
-                            <a href="{{route('articles.edit', $post->id)}}" class="col-md-3 col-md-offset-3 btn btn-primary">Editer</a>
-                            {!! Form::model($post, ['route' => ['articles.destroy', $post->id], 'method' => 'DELETE', 'class' => 'col-md-3']) !!}
-                            {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
-                            {!!Form::close()!!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </form>
+
+
+
 @endsection

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ValidatePostRequest;
+
+
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        //$this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -26,7 +27,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('articles.index')->with(compact('posts'));
+        return view('projets.index')->with(compact('posts'));
     }
 
     /**
@@ -37,7 +38,7 @@ class PostController extends Controller
     public function create()
     {
         $users = User::all()->lists('name', 'id');
-        return view('articles.create')->with(compact('users'));
+        return view('projets.create')->with(compact('users'));
     }
 
     /**
@@ -51,14 +52,29 @@ class PostController extends Controller
 
         $post = new Post;
 
-        $post->user_id  = $request->user_id;
         $post->title    = $request->title;
-        $post->description  = $request->description;
+        $post->user_id  = $request->user_id;
+        $post->client  = $request->client;
+        $post->client_metier  = $request->client_metier;
+        $post->client_tel  = $request->client_tel;
+        $post->client_email  = $request->client_email;
+        $post->client_adresse  = $request->client_adresse;
+        $post->client_suivi  = $request->client;
+        $post->client_suivi_metier  = $request->client_metier;
+        $post->client_suivi_tel  = $request->client_tel;
+        $post->client_suivi_email  = $request->client_email;
+        $post->client_suivi_adresse  = $request->client_adresse;
+        $post->fiche_identite    = $request->fiche_identite;
+        $post->type_projet  = $request->type_projet;
+        $post->context  = $request->context;
+        $post->demande  = $request->demande;
+        $post->objectifs  = $request->objectifs;
+        $post->contraintes  = $request->contraintes;
 
         $post->save();
 
         return redirect()
-            ->route('articles.show', $post->id)
+            ->route('projets.show', $post->id)
             ->with(compact('post'));
     }
 
@@ -74,10 +90,10 @@ class PostController extends Controller
         //dd($post);
 
         if (!$post){
-            return redirect()->to('/articles');
+            return redirect()->to('/projets');
         }
 
-        return view('articles.show')->with(compact('post'));
+        return view('projets.show')->with(compact('post'));
     }
 
     /**
@@ -92,10 +108,10 @@ class PostController extends Controller
         $users = User::all()->lists('name', 'id');
 
         if (!$post){
-            return redirect()->to('/articles');
+            return redirect()->to('/projets');
         }
 
-        return view('articles.edit')->with(compact('post', 'users'));
+        return view('projets.edit')->with(compact('post', 'users'));
     }
 
     /**
@@ -110,13 +126,27 @@ class PostController extends Controller
 
         $post = Post::find($id);
 
-        $post->title   = $request->title;
-        $post->description = $request->description;
-        $post->user_id = $request->user_id;
-
+        $post->title    = $request->title;
+        $post->user_id  = $request->user_id;
+        $post->client  = $request->client;
+        $post->client_metier  = $request->client_metier;
+        $post->client_tel  = $request->client_tel;
+        $post->client_email  = $request->client_email;
+        $post->client_adresse  = $request->client_adresse;
+        $post->client_suivi  = $request->client;
+        $post->client_suivi_metier  = $request->client_metier;
+        $post->client_suivi_tel  = $request->client_tel;
+        $post->client_suivi_email  = $request->client_email;
+        $post->client_suivi_adresse  = $request->client_adresse;
+        $post->fiche_identite    = $request->fiche_identite;
+        $post->type_projet  = $request->type_projet;
+        $post->context  = $request->context;
+        $post->demande  = $request->demande;
+        $post->objectifs  = $request->objectifs;
+        $post->contraintes  = $request->contraintes;
         $post->save();
 
-        return redirect()->route('articles.show', $post->id);
+        return redirect()->route('projets.show', $post->id);
     }
 
     /**
@@ -131,7 +161,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('articles.index');
+        return redirect()->route('projets.index');
 
     }
 
