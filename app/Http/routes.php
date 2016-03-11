@@ -37,17 +37,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('/articles', 'PostController');
 
-    Route::group(['prefix' => 'articles'], function(){
-
-
-        /*Route::get('/','ArticleController@index');
-
-        Route::post('/',['as' => 'articles.store', 'uses' => 'ArticleController@store']);
-
-        Route::get('/create','ArticleController@create');*/
-
-
-    });
+    Route::get('/profile', ['middleware' => 'auth', 'as' => 'profile.show', 'uses' => 'ProfileController@show']);
+    Route::get('/profile/edit', ['middleware' => 'auth', 'as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+    Route::put('/profile', ['middleware' => 'auth', 'as' => 'profile.update', 'uses' => 'ProfileController@update']);
 
 
 });
