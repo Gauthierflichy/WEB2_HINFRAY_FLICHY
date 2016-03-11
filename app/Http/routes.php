@@ -35,6 +35,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 
+    Route::resource('/articles', 'PostController');
+
     Route::group(['prefix' => 'articles'], function(){
 
 
@@ -44,8 +46,8 @@ Route::group(['middleware' => 'web'], function () {
 
         Route::get('/create','ArticleController@create');*/
 
+
     });
 
-    Route::resource('/articles', 'PostController');
 
 });

@@ -12,12 +12,10 @@
                         <h4>{{$post->user->name}}</h4>
                         <p>{{$post->description}}</p>
                         <div class="row">
-                            <a href="{{route('articles.edit', $post->id)}}" class="col-md-3 col-md-offset-2 btn btn-primary">Editer</a>
-                            <form action="{{route('articles.destroy', $post->id)}}" class="col-md-3">
-                                {{csrf_field()}}
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="submit" value="Supprimer" class=" col-md-12 btn btn-danger">
-                            </form>
+                            <a href="{{route('articles.edit', $post->id)}}" class="col-md-3 col-md-offset-3 btn btn-primary">Editer</a>
+                            {!! Form::model($post, ['route' => ['articles.destroy', $post->id], 'method' => 'DELETE', 'class' => 'col-md-3']) !!}
+                                {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
+                            {!!Form::close()!!}
                         </div>
                     </div>
                 </div>

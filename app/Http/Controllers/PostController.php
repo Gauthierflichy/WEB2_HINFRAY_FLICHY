@@ -11,6 +11,12 @@ use App\Http\Requests;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -123,12 +129,10 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        if(!$post){
-            return redirect()->route('articles.index');
-        } else {
-            $post->delete();
-            return redirect()->route('articles.index');
-        }
+        $post->delete();
+
+        return redirect()->route('articles.index');
 
     }
+
 }
