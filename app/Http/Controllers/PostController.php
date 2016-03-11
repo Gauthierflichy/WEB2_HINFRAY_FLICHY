@@ -46,7 +46,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidatePostRequest $request)
     {
 
         $post = new Post;
@@ -125,10 +125,24 @@ class PostController extends Controller
 
         $post = Post::find($id);
 
-        $post->title   = $request->title;
-        $post->description = $request->description;
-        $post->user_id = $request->user_id;
-
+        $post->title    = $request->title;
+        $post->user_id  = $request->user_id;
+        $post->client  = $request->client;
+        $post->client_metier  = $request->client_metier;
+        $post->client_tel  = $request->client_tel;
+        $post->client_email  = $request->client_email;
+        $post->client_adresse  = $request->client_adresse;
+        $post->client_suivi  = $request->client;
+        $post->client_suivi_metier  = $request->client_metier;
+        $post->client_suivi_tel  = $request->client_tel;
+        $post->client_suivi_email  = $request->client_email;
+        $post->client_suivi_adresse  = $request->client_adresse;
+        $post->fiche_identite    = $request->fiche_identite;
+        $post->type_projet  = $request->type_projet;
+        $post->context  = $request->context;
+        $post->demande  = $request->demande;
+        $post->objectifs  = $request->objectifs;
+        $post->contraintes  = $request->contraintes;
         $post->save();
 
         return redirect()->route('articles.show', $post->id);

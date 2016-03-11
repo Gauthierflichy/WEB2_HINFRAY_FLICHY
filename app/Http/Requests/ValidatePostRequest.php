@@ -21,7 +21,7 @@ class ValidatePostRequest extends Request
     {
         return [
             'title' => 'required|min:10',
-            'description' => 'required|min:10',
+            'demande' => 'required|min:10',
             'user_id' => 'required|exists:users,id'
         ];
     }
@@ -35,8 +35,8 @@ class ValidatePostRequest extends Request
         return [
             'title.required' => 'Le titre obligatoire',
             'title.min'      => 'Le titre doit �tre > 10 caract�res',
-            'description.required' => 'La decription obligatoire',
-            'description.min'      => 'La description doit �tre > 10 caract�res',
+            'demande.required' => 'La decription obligatoire',
+            'demande.min'      => 'La description doit �tre > 10 caract�res',
         ];
     }
 }
