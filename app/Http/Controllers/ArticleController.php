@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\User;
+use App\Models\comment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -62,7 +63,7 @@ class ArticleController extends Controller
         ]);
 
 
-        $article = new Post;
+        $article = new Article;
         $article->user_id      = $request->user_id;
         $article->title        = $request->title;
         $article->description  = $request->description;
@@ -85,10 +86,13 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article= Article::where('id', $id)->first();
+        $comments= comment::all();
+
+        $users= User::all()->lists('name','id');
         if(!$article){
             return redirect()->to('/articles');
         }
-        return view('articles.show')->with(compact('article'));
+        return view('articles.show')->with(compact('article','comments', 'users'));
     }
 
     /**

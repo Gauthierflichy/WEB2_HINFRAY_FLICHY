@@ -27,6 +27,14 @@ $factory->define(App\Models\Article::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'com' => $faker->city,
+        'article_id' => $faker->numberBetween(1,10),
+        'user_id' => $faker->numberBetween(1,10),
+    ];
+});
+
 $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
     return [
 

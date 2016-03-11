@@ -28,6 +28,6 @@ class CreateArticleTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Posts');
+        Schema::drop('Articles');
     }
 }

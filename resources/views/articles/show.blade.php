@@ -16,6 +16,14 @@
     <input value="supprimer" type="submit" class="form-control">
 
     </form>
+    <h2>Commentaires</h2>
+    @foreach($comments as $comment)
+        @if($comment->article_id==$article->id)
+            <p>{{$comment->user->name}} : {{$comment->com}}</p>
+        @endif
+
+    @endforeach
+
 
 
 
