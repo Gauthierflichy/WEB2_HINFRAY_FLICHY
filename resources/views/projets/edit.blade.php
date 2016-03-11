@@ -8,7 +8,7 @@
                     <div class="panel-heading">Modifier l'article {{$post->id}}</div>
 
                     <div class="panel-body">
-                        {!! Form::model($post, ['route' => ['articles.update', $post->id], 'method' => 'PUT']) !!}
+                        {!! Form::model($post, ['route' => ['projets.update', $post->id], 'method' => 'PUT']) !!}
 
                         <p>titre : {!! Form::text('title', old('title')) !!}</p>
                         {!! Form::select('user_id', $users , old('user_id')) !!}

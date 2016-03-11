@@ -31,8 +31,8 @@
                         <h2>Contraites particulières</h2>
                         <p>{{$post->contraintes}}</p>
                         <div class="row">
-                            <a href="{{route('articles.edit', $post->id)}}" class="col-md-3 col-md-offset-3 btn btn-primary">Editer</a>
-                            {!! Form::model($post, ['route' => ['articles.destroy', $post->id], 'method' => 'DELETE', 'class' => 'col-md-3']) !!}
+                            <a href="{{route('projets.edit', $post->id)}}" class="col-md-3 col-md-offset-3 btn btn-primary">Editer</a>
+                            {!! Form::model($post, ['route' => ['projets.destroy', $post->id], 'method' => 'DELETE', 'class' => 'col-md-3']) !!}
                             {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
                             {!!Form::close()!!}
                         </div>

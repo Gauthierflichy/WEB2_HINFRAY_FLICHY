@@ -9,7 +9,7 @@
 
                     <div class="panel-body">
 
-                        {!! Form::open(['url' => route('articles.store'), 'method' => 'POST']) !!}
+                        {!! Form::open(['url' => route('projets.store'), 'method' => 'POST']) !!}
                            {{csrf_field()}}
                            <p>titre : {!! Form::text('title') !!}</p>
                         {!! Form::select('user_id', $users) !!}
