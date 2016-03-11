@@ -5,7 +5,7 @@
     <h1>Edit</h1>
     {{--{!! Form::model(array('route' => array('post.update', $post->id), 'method' => 'PUT')) !!}--}}
 
-    {{ Form::model($post, array('route' => array('articles.update', $post->id), 'method' => 'PUT')) }}
+    {{ Form::model($article, array('route' => array('articles.update', $article->id), 'method' => 'PUT')) }}
     {{ csrf_field() }}
 
     {!! Form::select('user_id', $users , old('user_id')) !!}

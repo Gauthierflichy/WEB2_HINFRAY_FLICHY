@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,8 +17,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $posts= Post::all();
-        return view('articles.index')->with(compact('posts'));
+        $articles= Article::all();
+        return view('articles.index')->with(compact('articles'));
     }
 
     /**
@@ -35,11 +35,11 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $users= User::all()->lists('name','id');
-        $post= Post::find($id);
-        if(!$post){
+        $article= Article::find($id);
+        if(!$article){
             return redirect()->to('/articles');
         }
-        return view('articles.edit')->with(compact('post', 'users'));
+        return view('articles.edit')->with(compact('article', 'users'));
     }
 
     /**
@@ -62,13 +62,13 @@ class ArticleController extends Controller
         ]);
 
 
-        $post = new Post;
-        $post->user_id      = $request->user_id;
-        $post->title        = $request->title;
-        $post->description  = $request->description;
+        $article = new Post;
+        $article->user_id      = $request->user_id;
+        $article->title        = $request->title;
+        $article->description  = $request->description;
 
-        $post->save();
-        return redirect()->route('articles.show', $post->id);
+        $article->save();
+        return redirect()->route('articles.show', $article->id);
         //méthode 2
         /*$post= Post::create($request->except('_token'));
         dd($post);
@@ -84,11 +84,11 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        $post= Post::where('id', $id)->first();
-        if(!$post){
+        $article= Article::where('id', $id)->first();
+        if(!$article){
             return redirect()->to('/articles');
         }
-        return view('articles.show')->with(compact('post'));
+        return view('articles.show')->with(compact('article'));
     }
 
     /**
@@ -109,16 +109,16 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
 
-        $post= Post::find($id);
+        $article= Article::find($id);
 
-        if(!$post){
+        if(!$article){
             return redirect()->to('/articles');
         }
-        $post->user_id= $request->user_id;
-        $post->title= $request->title;
-        $post->description= $request->description;
+        $article->user_id= $request->user_id;
+        $article->title= $request->title;
+        $article->description= $request->description;
 
-        $post->save();
+        $article->save();
 
         return redirect()->route('articles.show', $id);
     }
@@ -131,11 +131,11 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $post= Post::find($id);
-        if(!$post){
+        $article= Article::find($id);
+        if(!$article){
             return redirect()->to('/articles');
         }
-        $post->delete();
+        $article->delete();
 
         return redirect()->route('articles.index');
     }
