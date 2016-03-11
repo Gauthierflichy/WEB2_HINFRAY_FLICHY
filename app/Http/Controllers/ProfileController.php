@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidateProfileRequest;
+use App\Http\Requests\ValidatePasswordRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller {
@@ -37,6 +39,24 @@ class ProfileController extends Controller {
             $user->save();
 
             return redirect()->route('profile.show');
+    }
+
+    public function edit_pswd()
+    {
+        return view('profile.change_pswd');
+    }
+
+    public  function update_pswd(ValidatePasswordRequest $request)
+    {
+        if($request->user()){
+            $user = $request->user();
+            if($request->password == $request->password_confirmation){
+                $user->password = bcrypt($request->password);
+                $user->save();
+
+                return redirect()->route('profile.show');
+            }
+        }
     }
 
 }

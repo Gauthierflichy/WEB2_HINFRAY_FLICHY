@@ -36,10 +36,10 @@ class ValidateProfileRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => 'Le nom obligatoire',
-            'name.min'      => 'Le nom doit être > 10 caractères',
+            'name.required'  => 'Le nom obligatoire',
+            'name.min'       => 'Le nom doit être > 10 caractères',
             'email.required' => 'L\'email est obligatoire',
-            'description.email'      => 'Veuillez entrer un email valide',
+            'email.email'    => 'Veuillez entrer un email valide',
         ];
     }
 }

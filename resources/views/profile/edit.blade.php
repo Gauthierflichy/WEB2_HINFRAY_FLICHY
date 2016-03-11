@@ -15,7 +15,7 @@
                         <div class="form-group">
                             {!! Form::text('email', old('email'), ['class' => 'form-control'], ['placeholder' => 'email']) !!}
                         </div>
-                        <a class="btn btn-link" href="{{ url('/password/reset') }}">Changer votre mot de passe</a>
+                        <a class="btn btn-danger" style="margin: 10px 0px;" href="{{ route('profile.edit_pswd') }}"><i class="fa fa-key" style="margin-right: 10px;"></i>Changer votre mot de passe</a>
                         {!! Form::submit('Envoyer', ['class' => 'btn btn-block']) !!}
                         {!!Form::close()!!}
 
