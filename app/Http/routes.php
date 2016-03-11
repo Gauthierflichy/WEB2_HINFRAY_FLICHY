@@ -31,14 +31,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-
-
+    
     Route::get('/home', 'HomeController@index');
 
     Route::resource('/projets', 'PostController');
     Route::resource('/articles', 'ArticleController');
 
-    Route::group(['prefix' => 'articles'], function(){
 
     Route::get('/profile', ['middleware' => 'auth', 'as' => 'profile.show', 'uses' => 'ProfileController@show']);
     Route::get('/profile/edit', ['middleware' => 'auth', 'as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
