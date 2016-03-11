@@ -49,13 +49,11 @@ class ProfileController extends Controller {
     public  function update_pswd(ValidatePasswordRequest $request)
     {
         if($request->user()){
-            $user = $request->user();
-            if($request->password == $request->password_confirmation){
+                $user = $request->user();
                 $user->password = bcrypt($request->password);
                 $user->save();
 
                 return redirect()->route('profile.show');
-            }
         }
     }
 
