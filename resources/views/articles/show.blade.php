@@ -17,10 +17,20 @@
 
     </form>
     <h2>Commentaires</h2>
+    {!! Form::open(['url' => action('CommentsController@store')])  !!}
+
+    {{ csrf_field() }}
+
+    {!! Form::text('com') !!}
+
+    <input type="hidden" name="article_id" value="{{$article->id}}">
+
+    {!! Form::close() !!}
+
     @foreach($comments as $comment)
-        @if($comment->article_id==$article->id)
+
             <p>{{$comment->user->name}} : {{$comment->com}}</p>
-        @endif
+        
 
     @endforeach
 

@@ -13,7 +13,7 @@ class Article extends Model
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
-    public function comment() {
-        return $this->belongsTo('App\Models\Comment');
+    public function comments() {
+        return $this->hasmany('App\Models\Comment');
     }
 }

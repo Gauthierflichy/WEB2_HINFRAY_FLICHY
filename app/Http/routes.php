@@ -36,6 +36,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('/projets', 'PostController');
     Route::resource('/articles', 'ArticleController');
+    Route::post('comments', 'CommentsController@store');
 });
 
     Route::get('/profile', ['middleware' => 'auth', 'as' => 'profile.show', 'uses' => 'ProfileController@show']);

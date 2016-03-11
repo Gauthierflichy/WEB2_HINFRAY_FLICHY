@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\User;
-use App\Models\comment;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -39,6 +39,7 @@ class ArticleController extends Controller
         return view('articles.create')->with(compact('users'));
     }
 
+
     public function edit($id)
     {
         $users= User::all()->lists('name','id');
@@ -67,7 +68,7 @@ class ArticleController extends Controller
         ]);
 
 
-        
+
         $article = new Article();
         $article->user_id      = $request->user()->id;
         $article->title        = $request->title;
@@ -78,6 +79,7 @@ class ArticleController extends Controller
 
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -87,7 +89,8 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article= Article::where('id', $id)->first();
-        $comments= comment::all();
+
+        $comments = $article->comments;
 
         $users= User::all()->lists('name','id');
         if(!$article){
