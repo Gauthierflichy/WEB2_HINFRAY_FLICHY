@@ -23,10 +23,13 @@
                            {!! Form::submit('Envoyer', ['class' => 'btn col-md-12 btn-success']) !!}
                        {!! Form::close() !!}
                         @if($errors)
-                            <ul>
-                            @foreach($errors->all as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
+                            <ul class="col-md-12" style="padding-top: 10px;">
+                                @foreach($errors->all() as $error)
+                                    <div class="alert alert-danger col-md-12">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <li style="list-style: none">{{$error}}</li>
+                                    </div>
+                                @endforeach
                             </ul>
                         @endif
                     </div>

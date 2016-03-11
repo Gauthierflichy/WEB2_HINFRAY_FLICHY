@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidateProfileRequest;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller {
@@ -27,19 +28,15 @@ class ProfileController extends Controller {
         }
     }
 
-    public function update(Request $request)
+    public function update(ValidateProfileRequest $request)
     {
-        if ($request->user())
-        {
             $user = $request->user();
-
-            $user->name = $request->user->name;
-            $user->email = $request->user->email;
+            $user->name = $request->name;
+            $user->email = $request->email;
 
             $user->save();
 
             return redirect()->route('profile.show');
-        }
     }
 
 }
