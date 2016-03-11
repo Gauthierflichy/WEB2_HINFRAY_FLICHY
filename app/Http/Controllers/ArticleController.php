@@ -11,6 +11,12 @@ use App\Http\Requests;
 
 class ArticleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +42,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $users= User::all()->lists('name','id');
-        $article= Article::find($id);
+        $article = Article::find($id);
         if(!$article){
             return redirect()->to('/articles');
         }
@@ -53,28 +59,23 @@ class ArticleController extends Controller
     {
 
         $this->validate($request,[
-            'user_id' => 'required',
             'title' => 'required|min:10',
             'description' => 'required|min:10'
         ],[
-            'user_id,required' => 'user_id manquant',
             'title.required' => 'titre obligatoire',
             'title.min' => 'titre supérieur à 10 charachtère'
         ]);
 
 
-        $article = new Article;
-        $article->user_id      = $request->user_id;
+        
+        $article = new Article();
+        $article->user_id      = $request->user()->id;
         $article->title        = $request->title;
         $article->description  = $request->description;
 
         $article->save();
         return redirect()->route('articles.show', $article->id);
-        //méthode 2
-        /*$post= Post::create($request->except('_token'));
-        dd($post);
 
-        */
     }
 
     /**

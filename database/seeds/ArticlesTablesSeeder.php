@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ArticlesTableSeeder extends Seeder
+class ArticlesTablesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Article::class, 20)->create(); // CrÃ©er 20 utilisateurs
+        factory(\App\Models\Article::class, 20)->create(); // Créer 20 utilisateurs
     }
 }
