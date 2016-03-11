@@ -10,7 +10,7 @@
                     <div class="panel-body">
                         @foreach($posts as $post)
                             <h2>{{$post->title}}</h2>
-                            <p>{{$post->description}}</p>
+                            <p>{{$post->demande}}</p>
                             <a href="{{route('articles.show', $post->id)}}" class="btn btn-primary">Voir l'article</a>
                         @endforeach
                     </div>
