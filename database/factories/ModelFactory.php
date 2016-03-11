@@ -24,6 +24,7 @@ $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
     return [
 
         'title' => 'Laroche Traiteur',
+        'user_id' => $faker->numberBetween(1,10),
         'client' => 'Jean-Micher Laroche',
         'client_metier' => 'propriétaire',
         'client_adresse' => '12 rue Victor Hugo 75018 Paris',

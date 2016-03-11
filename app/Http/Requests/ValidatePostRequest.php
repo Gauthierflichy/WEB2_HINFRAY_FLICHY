@@ -34,9 +34,9 @@ class ValidatePostRequest extends Request
     {
         return [
             'title.required' => 'Le titre obligatoire',
-            'title.min'      => 'Le titre doit être > 10 caractères',
+            'title.min'      => 'Le titre doit ï¿½tre > 10 caractï¿½res',
             'description.required' => 'La decription obligatoire',
-            'description.min'      => 'La description doit être > 10 caractères',
+            'description.min'      => 'La description doit ï¿½tre > 10 caractï¿½res',
         ];
     }
 }
