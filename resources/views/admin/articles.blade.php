@@ -4,6 +4,7 @@
     <ul class="nav navbar-nav">
         <li class=""><a href="{{route('admin.index')}}">Projets</a></li>
         <li class="active"><a href="{{route('admin.articles')}}">Articles</a></li>
+        <li class=""><a href="{{route('admin.users')}}">Membres</a></li>
     </ul>
 @endsection
 
@@ -12,7 +13,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Projets
+                    Articles
                 </div>
                 <div class="panel-body">
                     <div class="col-sm-12">

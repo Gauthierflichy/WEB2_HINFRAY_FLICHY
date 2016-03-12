@@ -33,4 +33,10 @@ class AdminController extends Controller
         $articles = Article::All();
         return view('admin.articles')->with(compact('articles'));
     }
+
+    public function users()
+    {
+        $users = User::All();
+        return view('admin.users')->with(compact('users'));
+    }
 }
