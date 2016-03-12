@@ -1,6 +1,5 @@
-
 @extends('layouts.app')
-
+@extends('layouts.user_menu')
 @section('content')
     <h1>Liste des articles</h1>
 

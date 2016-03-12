@@ -1,6 +1,5 @@
-
 @extends('layouts.app')
-
+@extends('layouts.user_menu')
 @section('content')
     <h2>Article n°{{$article->id}}</h2>
     <h3>Auteur : {{$article->user->name}}</h3>

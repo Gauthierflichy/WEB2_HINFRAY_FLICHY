@@ -31,6 +31,7 @@ class CreatePostTable extends Migration
             $table->longText('demande');
             $table->longText('objectifs');
             $table->longText('contraintes');
+            $table->char('status')->default('En Attente');
             $table->timestamps();
         });
     }
