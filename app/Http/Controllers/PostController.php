@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
 class PostController extends Controller
@@ -47,7 +46,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidatePostRequest $request)
+    public function store(Requests\ValidatePostRequest $request)
     {
 
         $post = new Post;

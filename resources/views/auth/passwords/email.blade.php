@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@extends('layouts.user_menu')
 <!-- Main Content -->
 @section('content')
 <div class="container">
