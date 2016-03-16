@@ -70,4 +70,11 @@ class AuthController extends Controller
         ]);
     }
 
+
+    /**
+     * Redirect the user to the Facebook authentication page.
+     *
+     * @return Response
+     */
+
 }

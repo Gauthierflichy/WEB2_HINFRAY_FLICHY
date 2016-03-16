@@ -36,8 +36,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('/projets', 'PostController');
     Route::resource('/articles', 'ArticleController');
-    Route::post('comments', 'CommentsController@store');
-
+    Route::resource('comments', 'CommentsController');
     Route::get('/admin', ['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.index', 'uses' => 'AdminController@index']);
     Route::get('/admin/articles', ['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.articles', 'uses' => 'AdminController@articles']);
     Route::get('/admin/users', ['middleware' => ['auth', 'isAdmin'], 'as' => 'admin.users', 'uses' => 'AdminController@users']);
@@ -50,6 +49,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/profile/change_pswd', ['middleware' => 'auth', 'as' => 'profile.edit_pswd', 'uses' => 'ProfileController@edit_pswd']);
     Route::put('/profile/change_pswd',['middleware' => 'auth', 'as' => 'profile.update_pswd', 'uses' => 'ProfileController@update_pswd'] );
 
+    Route::get('auth/facebook', 'Auth\AuthControllerFacebook@redirectToProvider');
+    Route::get('auth/facebook/callback', 'Auth\AuthControllerFacebook@handleProviderCallback');
+
+    Route::get('home',  function(){
+        return view('welcome');
+    });
 
 });
 

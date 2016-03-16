@@ -31,5 +31,15 @@ class CommentsController extends Controller
         return redirect()->route('articles.show', $comment->article_id);
 
     }
+    public function destroy($id)
+    {
+        $comment= Comment::find($id);
+        if(!$comment){
+            return redirect()->to('/articles');
+        }
+        $comment->delete();
+
+        return redirect()->route('articles.index');
+    }
 
 }
