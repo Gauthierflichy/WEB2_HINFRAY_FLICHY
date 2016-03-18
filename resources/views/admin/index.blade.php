@@ -19,7 +19,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline">
                             <thead>
-                                <tr role="row">
+                            <tr role="row">
                                     <th>Titre</th>
                                     <th>Client</th>
                                     <th>E-mail</th>

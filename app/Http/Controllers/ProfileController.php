@@ -57,7 +57,7 @@ class ProfileController extends Controller {
         }
     }
 
-    public function destroy($id)
+    public function delete(Request $id)
     {
         $user = User::find($id);
 

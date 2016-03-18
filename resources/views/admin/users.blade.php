@@ -17,9 +17,9 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline col-xs-12">
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline">
                             <thead>
-                                <tr>
+                                <tr role="row">
                                     <th>Nom</th>
                                     <th>E-mail</th>
                                     <th>Role</th>
@@ -35,14 +35,11 @@
                                         <th>{{$user->role}}</th>
                                         <th>
                                             <div class="row">
-                                                <div class="col-md-12 col-xs-12">
-                                                    <form action="{{route('profile.destroy', $user->id)}}" class="col-md-12" method="DESLETE">
-                                                        {{csrf_field()}}
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <input value="Supprimer X" type="submit" class="btn btn-danger btn-circle col-md-12">
-                                                    </form>
+                                                <div class="col-md-6">
+                                                    {!! Form::open( ['url' => ['/profile/delete', $user->id], 'method' => 'DELETE', 'class' => 'col-md-12']) !!}
+                                                    {!! Form::submit('Supprimer  X', ['class' => 'btn btn-danger']) !!}
                                                 </div>
-                                                <div class="col-md-12 col-xs-12">
+                                                <div class="col-md-6">
                                                     @if ($user->role !== "admin")
                                                         <form action="{{url('/profile/promote', $user->id)}}" class="col-md-12" method="POST">
                                                             {{csrf_field()}}
