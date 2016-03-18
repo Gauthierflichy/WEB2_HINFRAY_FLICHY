@@ -9,6 +9,7 @@
 
                 <div class="panel-body">
                    <a href="{{route('projets.create')}}" class="col-md-10 col-md-offset-1 btn btn-warning"><i class="fa fa-plus-circle"></i>  Nouveau Projet</a>
+                   <a href="{{route('articles.create')}}" style="margin-top: 20px" class="col-md-10 col-md-offset-1 btn btn-success"><i class="fa fa-plus-circle"></i>  Nouvel Article</a>
                 </div>
             </div>
         </div>

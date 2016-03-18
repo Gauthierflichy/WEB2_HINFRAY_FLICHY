@@ -67,4 +67,23 @@ class ProfileController extends Controller {
 
     }
 
+    public function promote($id)
+    {
+        $user = User::find($id);
+
+        //var_dump($user);
+
+        if ($user->role == "admin"){
+            $user->role = "membre";
+        } elseif ($user->role == "membre"){
+            $user->role = "admin";
+        }
+
+        $user->save();
+
+        return redirect()->route('admin.users');
+
+    }
+
+
 }

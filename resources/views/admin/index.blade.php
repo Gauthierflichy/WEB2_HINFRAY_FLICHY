@@ -16,7 +16,7 @@
                     Projets
                 </div>
                 <div class="panel-body">
-                    <div class="col-sm-12">
+                    <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline">
                             <thead>
                                 <tr role="row">

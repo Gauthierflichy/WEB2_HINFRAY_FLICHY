@@ -11,13 +11,13 @@
 
                         {{ csrf_field() }}
 
-                        {!! Form::text('title') !!}
+                        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Titre']) !!}
                         <br><br>
 
-                        {!! Form::textarea('description') !!}
+                        {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
                         <br><br>
 
-                        {!! Form::submit('Envoyer') !!}
+                        {!! Form::submit('Envoyer', ['class' => 'btn btn-success']) !!}
 
                         {!! Form::Close() !!}
                         @if($errors)

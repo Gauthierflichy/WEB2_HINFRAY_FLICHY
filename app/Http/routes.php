@@ -48,9 +48,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::delete('/admin/users', ['middleware' => ['auth', 'isAdmin'], 'as' => 'profile.destroy', 'uses' => 'ProfileController@destroy']);
     Route::get('/profile/change_pswd', ['middleware' => 'auth', 'as' => 'profile.edit_pswd', 'uses' => 'ProfileController@edit_pswd']);
     Route::put('/profile/change_pswd',['middleware' => 'auth', 'as' => 'profile.update_pswd', 'uses' => 'ProfileController@update_pswd'] );
-
-    Route::get('auth/facebook', 'Auth\AuthControllerFacebook@redirectToProvider');
-    Route::get('auth/facebook/callback', 'Auth\AuthControllerFacebook@handleProviderCallback');
+    Route::put('/profile/promote/{id}',['middleware' => ['auth', 'isAdmin'], 'as' => 'profile.promote', 'uses' => 'ProfileController@promote'] );
 
     Route::get('home',  function(){
         return view('welcome');

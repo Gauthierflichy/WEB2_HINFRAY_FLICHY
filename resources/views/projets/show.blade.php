@@ -5,11 +5,10 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Article {{$post->id}}</div>
+                    <div class="panel-heading">{{$post->title}}</div>
 
                     <div class="panel-body">
                         <h1>Demande d'inscription à la bourse aux projets de l'IIM</h1>
-                       <h2>{{$post->title}}</h2>
                         <h4>Nom, prénom et fonction du commanditaire : {{$post->client}} {{$post->client_metier}}</h4>
                         <p>Adresse postale : {{$post->client_adresse}}</p>
                         <p>Mail : {{$post->client_email}}</p>

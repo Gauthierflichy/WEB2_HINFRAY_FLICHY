@@ -52,7 +52,7 @@ class PostController extends Controller
         $post = new Post;
 
         $post->title    = $request->title;
-        $post->user_id  = $request->user_id;
+        $post->user_id  = $request->user()->id;
         $post->client  = $request->client;
         $post->client_metier  = $request->client_metier;
         $post->client_tel  = $request->client_tel;
@@ -120,7 +120,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidatePostRequest $request, $id)
+    public function update(Requests\ValidatePostRequest $request, $id)
     {
 
         $post = Post::find($id);

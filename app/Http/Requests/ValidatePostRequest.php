@@ -22,7 +22,6 @@ class ValidatePostRequest extends Request
         return [
             'title' => 'required|min:10',
             'demande' => 'required|min:10',
-            'user_id' => 'required|exists:users,id'
         ];
     }
     /**

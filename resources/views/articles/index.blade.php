@@ -16,14 +16,17 @@
                                     Voir l'article
                                 </button>
                             </a>
+                            @if (!Auth::guest())
+                                @if(Auth::user()->role == "admin" || Auth::user()->name == $article->user->name)
+                                    <form action="{{route('articles.destroy', $article->id)}}" method="POST">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="DELETE">
 
-                            <form action="{{route('articles.destroy', $article->id)}}" method="POST">
-                                {{csrf_field()}}
-                                <input type="hidden" name="_method" value="DELETE">
+                                        <input value="supprimer" type="submit" class="btn btn-danger">
 
-                                <input value="supprimer" type="submit" class="btn btn-danger">
-
-                            </form>
+                                    </form>
+                                @endif
+                            @endif
                         @endforeach
                     </div>
                 </div>
