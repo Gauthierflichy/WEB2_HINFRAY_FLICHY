@@ -51,6 +51,7 @@
                         @foreach($comments as $comment)
 
                                 <p>{{$comment->user->name}} : {{$comment->com}}</p>
+
                             <form action="{{route('comments.destroy', $comment->id)}}" method="POST">
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="DELETE">

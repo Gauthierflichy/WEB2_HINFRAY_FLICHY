@@ -91,7 +91,6 @@ class ArticleController extends Controller
         $article= Article::where('id', $id)->first();
 
         $comments = $article->comments;
-
         $users= User::all()->lists('name','id');
         if(!$article){
             return redirect()->to('/articles');
