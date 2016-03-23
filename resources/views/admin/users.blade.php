@@ -36,7 +36,7 @@
                                         <th>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    {!! Form::open( ['url' => ['/profile/delete', $user->id], 'method' => 'DELETE', 'class' => 'col-md-12']) !!}
+                                                    {{--{!! Form::open( ['url' => ['/profile/delete', $user->id], 'method' => 'DELETE', 'class' => 'col-md-12']) !!}--}}
                                                     {!! Form::submit('Supprimer  X', ['class' => 'btn btn-danger']) !!}
                                                 </div>
                                                 <div class="col-md-6">
